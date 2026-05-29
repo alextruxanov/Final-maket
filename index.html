@@ -65,7 +65,6 @@
 
     <!-- ОСНОВНАЯ ЧАСТЬ -->
     <div class="main-wrapper">
-      <!-- ХЕДЕР -->
       <header class="main-header">
         <div class="main-header__left">
           <button class="burger-btn"
@@ -84,21 +83,21 @@
           /></button>
         </div>
         <div class="main-header__right">
-          <button class="btn-repair"
-            ><span class="btn-repair__text">Оставить заявку</span
-            ><img src="img/repair.svg" alt="repair" class="btn-repair__icon"
-          /></button>
-          <button class="btn-status"
-            ><span class="btn-status__text">Статус ремонта</span
-            ><img
+          <button class="btn-repair">
+            <span class="btn-repair__text">Оставить заявку</span>
+            <img src="img/repair.svg" alt="repair" class="btn-repair__icon" />
+          </button>
+          <button class="btn-status">
+            <span class="btn-status__text">Статус ремонта</span>
+            <img
               src="img/checkstatus.svg"
               alt="checkstatus"
               class="btn-status__icon"
-          /></button>
+            />
+          </button>
         </div>
       </header>
 
-      <!-- ОСНОВНОЙ КОНТЕНТ -->
       <main class="main">
         <section class="services">
           <h1 class="services__title">Услуги и сервисы</h1>
@@ -140,7 +139,6 @@
         </section>
       </main>
 
-      <!-- БЛОК С БРЕНДАМИ -->
       <div class="services-card">
         <h2 class="services-title">РЕМОНТ ТЕХНИКИ РАЗЛИЧНЫХ БРЕНДОВ</h2>
         <div class="brands-grid desktop-grid" id="desktopBrandsGrid"></div>
@@ -161,7 +159,6 @@
         </div>
       </div>
 
-      <!-- БЛОК С ВИДАМИ ТЕХНИКИ -->
       <div class="tech-types">
         <h2 class="tech-types__title">РЕМОНТ РАЗЛИЧНЫХ ВИДОВ ТЕХНИКИ</h2>
         <div class="tech-types__grid" id="techTypesGrid">
@@ -189,7 +186,6 @@
         </div>
       </div>
 
-      <!-- БЛОК С ЦЕНАМИ НА УСЛУГИ -->
       <div class="prices">
         <h2 class="prices__title">Цены на услуги</h2>
         <div class="prices__table-wrapper">
@@ -262,55 +258,51 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!-- МОДАЛКА ЗАКАЗАТЬ ЗВОНОК (выезжает справа) -->
+    <!-- МОДАЛЬНЫЕ ОКНА -->
     <div class="modal-side" id="callModal">
       <div class="modal-side__content">
         <div class="modal-side__header">
-          <button class="modal-side__close">
-            <img src="img/exit.svg" alt="Закрыть" />
-          </button>
+          <button class="modal-side__close"
+            ><img src="img/exit.svg" alt="Закрыть"
+          /></button>
           <h3 class="modal-side__title">Заказать звонок</h3>
         </div>
         <form class="modal-side__form" id="callForm">
           <div class="modal-side__field">
             <input type="tel" name="phone" placeholder="Телефон" required />
           </div>
-          <p class="modal-side__agreement">
-            Нажимая "отправить", вы даете согласие на обработку персональных
+          <p class="modal-side__agreement"
+            >Нажимая "отправить", вы даете согласие на обработку персональных
             данных и соглашаетесь с нашей
-            <a href="#">политикой конфиденциальности</a>.
-          </p>
+            <a href="#">политикой конфиденциальности</a>.</p
+          >
           <button type="submit" class="modal-side__submit">ОТПРАВИТЬ</button>
         </form>
       </div>
     </div>
 
-    <!-- МОДАЛКА ОБРАТНАЯ СВЯЗЬ (выезжает справа) -->
     <div class="modal-side" id="feedbackModal">
       <div class="modal-side__content">
         <div class="modal-side__header">
-          <button class="modal-side__close">
-            <img src="img/exit.svg" alt="Закрыть" />
-          </button>
+          <button class="modal-side__close"
+            ><img src="img/exit.svg" alt="Закрыть"
+          /></button>
           <h3 class="modal-side__title">Обратная связь</h3>
         </div>
         <form class="modal-side__form" id="feedbackForm">
-          <div class="modal-side__field">
-            <input type="text" name="name" placeholder="Имя" required />
-          </div>
-          <div class="modal-side__field">
-            <input type="tel" name="phone" placeholder="Телефон" required />
-          </div>
-          <div class="modal-side__field">
-            <input
+          <div class="modal-side__field"
+            ><input type="text" name="name" placeholder="Имя" required
+          /></div>
+          <div class="modal-side__field"
+            ><input type="tel" name="phone" placeholder="Телефон" required
+          /></div>
+          <div class="modal-side__field"
+            ><input
               type="email"
               name="email"
               placeholder="Электронная почта"
               required
-            />
-          </div>
+          /></div>
           <div class="modal-side__field">
             <textarea
               name="message"
@@ -319,18 +311,20 @@
               required
             ></textarea>
           </div>
-          <p class="modal-side__agreement">
-            Нажимая "отправить", вы даете согласие на обработку персональных
+          <p class="modal-side__agreement"
+            >Нажимая "отправить", вы даете согласие на обработку персональных
             данных и соглашаетесь с нашей
-            <a href="#">политикой конфиденциальности</a>.
-          </p>
+            <a href="#">политикой конфиденциальности</a>.</p
+          >
           <button type="submit" class="modal-side__submit">ОТПРАВИТЬ</button>
         </form>
       </div>
     </div>
-    <!-- Оверлей для затемнения -->
+
     <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- СКРИПТЫ (только один раз, только bundle.js) -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/main.js" type="module"></script>
+    <script src="js/bundle.js"></script>
   </body>
 </html>
