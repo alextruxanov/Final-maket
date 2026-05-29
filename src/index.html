@@ -70,7 +70,6 @@
           <button class="burger-btn"
             ><span></span><span></span><span></span
           ></button>
-          <div class="logo"><img src="img/logo.png" alt="CPS" /></div>
         </div>
         <div class="main-header__center">
           <button class="btn-call"
@@ -263,5 +262,72 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- МОДАЛКА ЗАКАЗАТЬ ЗВОНОК (выезжает справа) -->
+    <div class="modal-side" id="callModal">
+      <div class="modal-side__content">
+        <div class="modal-side__header">
+          <button class="modal-side__close">
+            <img src="img/exit.svg" alt="Закрыть" />
+          </button>
+          <h3 class="modal-side__title">Заказать звонок</h3>
+        </div>
+        <form class="modal-side__form" id="callForm">
+          <div class="modal-side__field">
+            <input type="tel" name="phone" placeholder="Телефон" required />
+          </div>
+          <p class="modal-side__agreement">
+            Нажимая "отправить", вы даете согласие на обработку персональных
+            данных и соглашаетесь с нашей
+            <a href="#">политикой конфиденциальности</a>.
+          </p>
+          <button type="submit" class="modal-side__submit">ОТПРАВИТЬ</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- МОДАЛКА ОБРАТНАЯ СВЯЗЬ (выезжает справа) -->
+    <div class="modal-side" id="feedbackModal">
+      <div class="modal-side__content">
+        <div class="modal-side__header">
+          <button class="modal-side__close">
+            <img src="img/exit.svg" alt="Закрыть" />
+          </button>
+          <h3 class="modal-side__title">Обратная связь</h3>
+        </div>
+        <form class="modal-side__form" id="feedbackForm">
+          <div class="modal-side__field">
+            <input type="text" name="name" placeholder="Имя" required />
+          </div>
+          <div class="modal-side__field">
+            <input type="tel" name="phone" placeholder="Телефон" required />
+          </div>
+          <div class="modal-side__field">
+            <input
+              type="email"
+              name="email"
+              placeholder="Электронная почта"
+              required
+            />
+          </div>
+          <div class="modal-side__field">
+            <textarea
+              name="message"
+              placeholder="Сообщение"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+          <p class="modal-side__agreement">
+            Нажимая "отправить", вы даете согласие на обработку персональных
+            данных и соглашаетесь с нашей
+            <a href="#">политикой конфиденциальности</a>.
+          </p>
+          <button type="submit" class="modal-side__submit">ОТПРАВИТЬ</button>
+        </form>
+      </div>
+    </div>
+    <!-- Оверлей для затемнения -->
+    <div class="modal-overlay" id="modalOverlay"></div>
   </body>
 </html>

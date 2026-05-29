@@ -88,18 +88,97 @@ function onToggleClick() {
   updateUI()
 }
 
-function initBrands() {
-  currentLimit = getLimitByWidth()
-  isExpanded = false
-  renderDesktopGrid()
-  if (toggleBtn) toggleBtn.addEventListener('click', onToggleClick)
-  window.addEventListener('resize', () => {
-    currentLimit = getLimitByWidth()
-    if (!isExpanded) updateUI()
+// ========== МОБИЛЬНЫЙ СЛАЙДЕР ==========
+function renderMobileSlider() {
+  if (!sliderTrack) return
+
+  sliderTrack.innerHTML = ''
+
+  const visibleCount = isExpanded ? fullBrandsList.length : currentLimit
+  const brandsToShow = fullBrandsList.slice(0, visibleCount)
+
+  brandsToShow.forEach((brand, index) => {
+    const slide = document.createElement('div')
+    slide.className = 'slider-item'
+    slide.dataset.index = index
+
+    const content = document.createElement('div')
+    content.className = 'slider-item-content'
+
+    const img = document.createElement('img')
+    img.src = brand.img
+    img.alt = brand.name || 'brand'
+    img.className = 'brand-icon-mobile'
+    img.onerror = () => {
+      img.style.display = 'none'
+    }
+
+    content.appendChild(img)
+
+    const arrow = document.createElement('div')
+    arrow.className = 'slider-arrow'
+    arrow.innerHTML = getArrowSVG()
+
+    slide.appendChild(content)
+    slide.appendChild(arrow)
+
+    slide.addEventListener('click', () => {
+      console.log('Выбран бренд')
+    })
+
+    sliderTrack.appendChild(slide)
   })
+
+  updatePagination(brandsToShow.length)
+  setupScrollObserver()
 }
 
-// БЛОК С ВИДАМИ ТЕХНИКИ
+function updatePagination(slidesCount) {
+  if (!sliderPagination) return
+  sliderPagination.innerHTML = ''
+
+  for (let i = 0; i < slidesCount; i++) {
+    const dot = document.createElement('div')
+    dot.className = 'pagination-dot'
+    if (i === 0) dot.classList.add('active')
+    dot.addEventListener('click', () => {
+      const slides = sliderTrack.querySelectorAll('.slider-item')
+      if (slides[i]) {
+        slides[i].scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start'
+        })
+      }
+    })
+    sliderPagination.appendChild(dot)
+  }
+}
+
+function setupScrollObserver() {
+  if (!sliderTrack || !sliderPagination) return
+
+  const updateActiveDot = () => {
+    const slides = sliderTrack.querySelectorAll('.slider-item')
+    const scrollPosition = sliderTrack.scrollLeft
+    const slideWidth = slides[0] ? slides[0].offsetWidth : 0
+    const activeIndex = Math.round(scrollPosition / slideWidth)
+
+    const dots = sliderPagination.querySelectorAll('.pagination-dot')
+    dots.forEach((dot, i) => {
+      if (i === activeIndex) {
+        dot.classList.add('active')
+      } else {
+        dot.classList.remove('active')
+      }
+    })
+  }
+
+  sliderTrack.addEventListener('scroll', updateActiveDot)
+  window.addEventListener('resize', updateActiveDot)
+}
+
+// ========== БЛОК С ВИДАМИ ТЕХНИКИ ==========
 const techTypesGrid = document.getElementById('techTypesGrid')
 const techTypesToggle = document.getElementById('techTypesToggle')
 
@@ -128,7 +207,115 @@ if (techTypesGrid && techTypesToggle) {
   updateTechVisibility()
 }
 
-// ДОБАВЛЕНИЕ СТРЕЛОК
+// ========== МОДАЛЬНЫЕ ОКНА (ВЫЕЗЖАЮЩИЕ) ==========
+const modalCall = document.getElementById('callModal')
+const modalFeedback = document.getElementById('feedbackModal')
+const modalOverlay = document.getElementById('modalOverlay')
+const callButtons = document.querySelectorAll('.btn-call, .btn__red-call')
+const chatButtons = document.querySelectorAll('.btn-chat, .btn__red-chat')
+
+function openModal(modal) {
+  if (modal) modal.classList.add('modal--open')
+  if (modalOverlay) modalOverlay.classList.add('modal-overlay--visible')
+  document.body.style.overflow = 'hidden'
+}
+
+function closeModal(modal) {
+  if (modal) modal.classList.remove('modal--open')
+  if (modalOverlay) modalOverlay.classList.remove('modal-overlay--visible')
+  document.body.style.overflow = ''
+}
+
+function closeAllModals() {
+  closeModal(modalCall)
+  closeModal(modalFeedback)
+}
+
+callButtons.forEach((btn) => {
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault()
+      openModal(modalCall)
+    })
+  }
+})
+
+chatButtons.forEach((btn) => {
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault()
+      openModal(modalFeedback)
+    })
+  }
+})
+
+document.querySelectorAll('.modal-side__close').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const modal = btn.closest('.modal-side')
+    closeModal(modal)
+  })
+})
+
+if (modalOverlay) {
+  modalOverlay.addEventListener('click', () => {
+    closeAllModals()
+  })
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeAllModals()
+  }
+})
+
+// Отправка форм
+const callForm = document.getElementById('callForm')
+const feedbackForm = document.getElementById('feedbackForm')
+
+if (callForm) {
+  callForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    alert('Заявка на звонок отправлена!')
+    closeModal(modalCall)
+    callForm.reset()
+  })
+}
+
+if (feedbackForm) {
+  feedbackForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    alert('Сообщение отправлено!')
+    closeModal(modalFeedback)
+    feedbackForm.reset()
+  })
+}
+
+// ========== ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ПРИ РЕСАЙЗЕ ==========
+function updateUIBasedOnWidth() {
+  const isMobile = window.innerWidth <= 768
+  const desktopGridElem = document.querySelector('.brands-grid.desktop-grid')
+  const mobileSliderContainer = document.querySelector(
+    '.mobile-slider-container'
+  )
+
+  if (isMobile) {
+    if (desktopGridElem) desktopGridElem.style.display = 'none'
+    if (mobileSliderContainer) mobileSliderContainer.style.display = 'block'
+    renderMobileSlider()
+  } else {
+    if (desktopGridElem) desktopGridElem.style.display = 'grid'
+    if (mobileSliderContainer) mobileSliderContainer.style.display = 'none'
+  }
+}
+
+function initBrands() {
+  currentLimit = getLimitByWidth()
+  isExpanded = false
+  renderDesktopGrid()
+  if (toggleBtn) toggleBtn.addEventListener('click', onToggleClick)
+}
+
+// ========== ДОБАВЛЕНИЕ СТРЕЛОК ==========
 document.querySelectorAll('.tech-types__arrow').forEach((el) => {
   el.innerHTML = getArrowSVG()
 })
@@ -141,7 +328,15 @@ document.querySelectorAll('.prices__offer-arrow').forEach((el) => {
   el.innerHTML = getArrowSVG()
 })
 
-document.addEventListener('DOMContentLoaded', () => {
+// ========== ЗАПУСК ==========
+window.addEventListener('load', () => {
   initBrands()
+  updateUIBasedOnWidth()
   console.log('✅ Загружено')
+})
+
+window.addEventListener('resize', () => {
+  currentLimit = getLimitByWidth()
+  if (!isExpanded) updateUI()
+  updateUIBasedOnWidth()
 })
