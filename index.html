@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-    <title>Service</title>
+    <title>CPS - Сервисный центр</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="style.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet"></head>
   <body>
     
@@ -48,7 +49,6 @@
 
     
     <div class="main-wrapper">
-      
       <header class="main-header">
         <div class="main-header__left">
           <button class="burger-btn"><span></span><span></span><span></span></button>
@@ -64,7 +64,6 @@
         </div>
       </header>
 
-      
       <main class="main">
         <section class="services">
           <h1 class="services__title">Услуги и сервисы</h1>
@@ -82,23 +81,14 @@
                 Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с
                 официальной гарантией производителя.</p>
               <p class="services__text">Мы успешно работаем с 1992 года и заслужили репутацию надежного
-                партнера, что подтверждает большое количество постоянных
-                клиентов. Мы гордимся тем, что к нам обращаются по рекомендациям
-                и, в свою очередь, советуют нас родным и близким.</p>
-              <button class="services__read-more">
-                <span class="services__arrows">
-                  <span class="services__arrow"></span>
-                  <span class="services__arrow"></span>
-                </span>
-                Читать далее
-              </button>
+                партнера.</p>
+              <button class="services__read-more"><span class="services__arrows"><span class="services__arrow"></span><span class="services__arrow"></span></span>Читать далее</button>
             </div>
             <div class="services__image-wrapper"><img src="img/photo1.png" alt="CPS" class="services__image"></div>
           </div>
         </section>
       </main>
 
-      
       <div class="services-card">
         <h2 class="services-title">РЕМОНТ ТЕХНИКИ РАЗЛИЧНЫХ БРЕНДОВ</h2>
         <div class="brands-grid desktop-grid" id="desktopBrandsGrid"></div>
@@ -106,18 +96,9 @@
           <div class="slider-wrapper"><div class="slider-track" id="sliderTrack"></div></div>
           <div class="slider-pagination" id="sliderPagination"></div>
         </div>
-        <div class="button-wrapper">
-          <button class="toggle-btn" id="toggleBtn">
-            <span class="toggle-btn__arrows">
-              <span class="toggle-btn__arrow"></span>
-              <span class="toggle-btn__arrow"></span>
-            </span>
-            Показать все
-          </button>
-        </div>
+        <div class="button-wrapper"><button class="toggle-btn" id="toggleBtn"><span class="toggle-btn__arrows"><span class="toggle-btn__arrow"></span><span class="toggle-btn__arrow"></span></span>Показать все</button></div>
       </div>
 
-      
       <div class="tech-types">
         <h2 class="tech-types__title">РЕМОНТ РАЗЛИЧНЫХ ВИДОВ ТЕХНИКИ</h2>
         <div class="tech-types__grid" id="techTypesGrid">
@@ -126,25 +107,14 @@
           <button class="tech-types__item"><span>Ремонт ПК</span><span class="tech-types__arrow"></span></button>
           <button class="tech-types__item"><span>Ремонт мониторов</span><span class="tech-types__arrow"></span></button>
         </div>
-        <div class="tech-types__button-wrapper">
-          <button class="tech-types__toggle" id="techTypesToggle">
-            <span class="tech-types__toggle__arrows">
-              <span class="tech-types__toggle__arrow"></span>
-              <span class="tech-types__toggle__arrow"></span>
-            </span>
-            Показать все
-          </button>
-        </div>
+        <div class="tech-types__button-wrapper"><button class="tech-types__toggle" id="techTypesToggle"><span class="tech-types__toggle__arrows"><span class="tech-types__toggle__arrow"></span><span class="tech-types__toggle__arrow"></span></span>Показать все</button></div>
       </div>
 
-      
       <div class="prices">
         <h2 class="prices__title">Цены на услуги</h2>
         <div class="prices__table-wrapper">
           <table class="prices__table">
-            <thead>
-              <tr><th>Ремонтные услуги</th><th>Цена</th><th>Срок</th><th></th></tr>
-            </thead>
+            <thead><tr><th>Ремонтные услуги</th><th>Цена</th><th>Срок</th><th></th></tr></thead>
             <tbody>
               <tr><td>Диагностика</td><td>Бесплатно</td><td>30 мин</td><td><button class="prices__order-btn">Заказать
                     <span class="prices__order-arrow"></span></button></td></tr>
@@ -174,63 +144,93 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     
     <div class="modal-side" id="callModal">
       <div class="modal-side__content">
         <div class="modal-side__header">
-          <button class="modal-side__close">
-            <img src="img/exit.svg" alt="Закрыть">
-          </button>
+          <button class="modal-side__close"><img src="img/exit.svg" alt="Закрыть"></button>
           <h3 class="modal-side__title">Заказать звонок</h3>
         </div>
         <form class="modal-side__form" id="callForm">
-          <div class="modal-side__field">
-            <input type="tel" name="phone" placeholder="Телефон" required>
-          </div>
-          <p class="modal-side__agreement">
-            Нажимая "отправить", вы даете согласие на обработку персональных
+          <div class="modal-side__field"><input type="tel" name="phone" placeholder="Телефон" required></div>
+          <p class="modal-side__agreement">Нажимая "отправить", вы даете согласие на обработку персональных
             данных и соглашаетесь с нашей
-            <a href="#">политикой конфиденциальности</a>.
-          </p>
+            <a href="#">политикой конфиденциальности</a>.</p>
           <button type="submit" class="modal-side__submit">ОТПРАВИТЬ</button>
         </form>
       </div>
     </div>
 
-    
     <div class="modal-side" id="feedbackModal">
       <div class="modal-side__content">
         <div class="modal-side__header">
-          <button class="modal-side__close">
-            <img src="img/exit.svg" alt="Закрыть">
-          </button>
+          <button class="modal-side__close"><img src="img/exit.svg" alt="Закрыть"></button>
           <h3 class="modal-side__title">Обратная связь</h3>
         </div>
         <form class="modal-side__form" id="feedbackForm">
-          <div class="modal-side__field">
-            <input type="text" name="name" placeholder="Имя" required>
-          </div>
-          <div class="modal-side__field">
-            <input type="tel" name="phone" placeholder="Телефон" required>
-          </div>
-          <div class="modal-side__field">
-            <input type="email" name="email" placeholder="Электронная почта" required>
-          </div>
+          <div class="modal-side__field"><input type="text" name="name" placeholder="Имя" required></div>
+          <div class="modal-side__field"><input type="tel" name="phone" placeholder="Телефон" required></div>
+          <div class="modal-side__field"><input type="email" name="email" placeholder="Электронная почта" required></div>
           <div class="modal-side__field">
             <textarea name="message" placeholder="Сообщение" rows="4" required></textarea>
           </div>
-          <p class="modal-side__agreement">
-            Нажимая "отправить", вы даете согласие на обработку персональных
+          <p class="modal-side__agreement">Нажимая "отправить", вы даете согласие на обработку персональных
             данных и соглашаетесь с нашей
-            <a href="#">политикой конфиденциальности</a>.
-          </p>
+            <a href="#">политикой конфиденциальности</a>.</p>
           <button type="submit" class="modal-side__submit">ОТПРАВИТЬ</button>
         </form>
       </div>
     </div>
-    
+
     <div class="modal-overlay" id="modalOverlay"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/bundle.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var burgerBtn = document.querySelector('.burger-btn')
+        var sidePanel = document.querySelector('.side-panel')
+        var exitBtn = document.querySelector('.icon-btn')
+
+        var overlay = document.querySelector('.menu-overlay')
+        if (!overlay) {
+          overlay = document.createElement('div')
+          overlay.className = 'menu-overlay'
+          document.body.appendChild(overlay)
+        }
+
+        function closeMenu() {
+          sidePanel.classList.remove('side-panel--open')
+          overlay.classList.remove('menu-overlay--visible')
+          document.body.style.overflow = ''
+        }
+
+        function openMenu() {
+          sidePanel.classList.add('side-panel--open')
+          overlay.classList.add('menu-overlay--visible')
+          document.body.style.overflow = 'hidden'
+        }
+
+        if (burgerBtn) {
+          burgerBtn.onclick = function (e) {
+            e.preventDefault()
+            openMenu()
+          }
+        }
+
+        if (exitBtn) {
+          exitBtn.onclick = function (e) {
+            e.preventDefault()
+            closeMenu()
+          }
+        }
+
+        overlay.onclick = closeMenu
+
+        document.onkeydown = function (e) {
+          if (e.key === 'Escape') closeMenu()
+        }
+      })
+    </script>
   <script type="text/javascript" src="./js/bundle.js"></script></body>
 </html>

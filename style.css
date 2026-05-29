@@ -1,23 +1,4 @@
 @charset "UTF-8";
-/* Шрифты */
-@font-face {
-  font-family: 'TT Lakes';
-  src: url(./fonts/TTLakes-Regular.woff) format("woff");
-  font-weight: 400;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'TT Lakes';
-  src: url(./fonts/TTLakes-Bold.woff) format("woff");
-  font-weight: 700;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'TT Lakes';
-  src: url(./fonts/TTLakes-Medium.woff) format("woff");
-  font-weight: 500;
-  font-style: normal; }
-
 /* ========== RESET ========== */
 * {
   margin: 0;
@@ -344,13 +325,6 @@ body {
   .services__image-wrapper {
     flex: 0 0 45%; } }
 
-@media (max-width: 767px) {
-  .services__title {
-    font-size: 24px; }
-  .services__image-wrapper {
-    justify-content: center;
-    margin-top: 20px; } }
-
 /* ========== БЛОК С БРЕНДАМИ ========== */
 .services-card {
   background: white;
@@ -415,7 +389,6 @@ body {
 .brand-arrow svg path {
   fill: #e31e24; }
 
-/* Кнопка "Показать все" с двойными стрелками */
 .toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -448,7 +421,6 @@ body {
   justify-content: flex-start;
   margin-top: 6px; }
 
-/* Мобильный слайдер */
 .mobile-slider-container {
   display: none;
   width: 100%;
@@ -479,8 +451,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.2s; }
+  cursor: pointer; }
 
 .slider-item:active {
   transform: scale(0.98); }
@@ -521,8 +492,7 @@ body {
   height: 8px;
   border-radius: 50%;
   background: #cbdde9;
-  cursor: pointer;
-  transition: all 0.2s; }
+  cursor: pointer; }
 
 .pagination-dot.active {
   width: 24px;
@@ -596,7 +566,6 @@ body {
 .tech-types__arrow svg path {
   fill: #e31e24; }
 
-/* Кнопка "Показать все" для видов техники */
 .tech-types__toggle {
   display: inline-flex;
   align-items: center;
@@ -676,8 +645,7 @@ body {
   padding: 8px 20px;
   font-size: 12px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s; }
+  cursor: pointer; }
 
 .prices__order-btn:hover {
   background: #e62e6a; }
@@ -711,7 +679,6 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
   margin-bottom: 32px; }
 
 .prices__offer-btn:hover {
@@ -743,7 +710,7 @@ body {
   font-size: 12px;
   color: #7e7e82; }
 
-/* ========== МОДАЛЬНЫЕ ОКНА (ВЫЕЗЖАЮТ СПРАВА) ========== */
+/* ========== МОДАЛЬНЫЕ ОКНА ========== */
 .modal-side {
   position: fixed;
   top: 0;
@@ -803,8 +770,7 @@ body {
   border: 1px solid #e2e9f0;
   border-radius: 16px;
   font-size: 14px;
-  font-family: inherit;
-  transition: border-color 0.2s; }
+  font-family: inherit; }
 
 .modal-side__field input:focus,
 .modal-side__field textarea:focus {
@@ -820,9 +786,6 @@ body {
   color: #ff3e79;
   text-decoration: none; }
 
-.modal-side__agreement a:hover {
-  text-decoration: underline; }
-
 .modal-side__submit {
   background: #ff3e79;
   color: white;
@@ -832,14 +795,12 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
   width: -moz-fit-content;
   width: fit-content; }
 
 .modal-side__submit:hover {
   background: #e62e6a; }
 
-/* Оверлей для модалки */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -856,19 +817,18 @@ body {
   opacity: 1;
   visibility: visible; }
 
-/* Адаптив для модалок */
-@media (max-width: 480px) {
-  .modal-side {
-    max-width: 100%; }
-  .modal-side__title {
-    font-size: 24px; }
-  .modal-side__content {
-    padding: 24px 20px; } }
-
 /* ===== АДАПТИВ ===== */
 @media (max-width: 767px) {
+  .services__title {
+    font-size: 24px; }
+  .services__image-wrapper {
+    justify-content: center;
+    margin-top: 20px; }
   .main-header__center {
-    display: none; }
+    display: none !important; }
+  .main-header__right {
+    display: flex !important;
+    gap: 12px !important; }
   .brands-grid.desktop-grid {
     display: none !important; }
   .mobile-slider-container {
@@ -900,7 +860,13 @@ body {
   .prices__copyright {
     flex-direction: column;
     text-align: center;
-    gap: 8px; } }
+    gap: 8px; }
+  .modal-side {
+    max-width: 100%; }
+  .modal-side__title {
+    font-size: 24px; }
+  .modal-side__content {
+    padding: 24px 20px; } }
 
 @media (min-width: 768px) and (max-width: 1119px) {
   .main-header__center {
@@ -922,9 +888,6 @@ body {
     flex: 1; }
   .main-header__center {
     display: none; }
-  /* Скрываем кнопку бургера на десктопе */
-  .burger-btn {
-    display: none !important; }
   .btn-repair__text,
   .btn-status__text {
     display: inline-block; }
@@ -938,6 +901,100 @@ body {
 @media (min-width: 1440px) {
   .main {
     padding: 32px 40px; } }
+
+/* Боковое меню выезжающее */
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 320px;
+  height: 100%;
+  background: white;
+  z-index: 1001;
+  transition: left 0.3s ease;
+  overflow-y: auto; }
+
+.side-panel.side-panel--open {
+  left: 0; }
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s; }
+
+.menu-overlay.menu-overlay--visible {
+  opacity: 1;
+  visibility: visible; }
+
+@media (min-width: 1120px) {
+  .side-panel {
+    position: static;
+    left: 0;
+    display: block !important; }
+  .burger-btn {
+    display: none !important; }
+  .menu-overlay {
+    display: none; } }
+
+/* Мобилка - скрываем текст у кнопок */
+@media (max-width: 767px) {
+  .btn-repair__text,
+  .btn-status__text {
+    display: none !important; }
+  .btn-repair,
+  .btn-status {
+    padding: 0 !important;
+    gap: 0 !important; } }
+
+/* Принудительные стили для меню */
+.side-panel {
+  position: fixed !important;
+  top: 0 !important;
+  left: -320px !important;
+  width: 320px !important;
+  height: 100% !important;
+  background: white !important;
+  z-index: 1001 !important;
+  transition: left 0.3s ease !important; }
+
+.side-panel.side-panel--open {
+  left: 0 !important;
+  display: block !important; }
+
+/* Оверлей */
+.menu-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s !important; }
+
+.menu-overlay.menu-overlay--visible {
+  opacity: 1 !important;
+  visibility: visible !important; }
+
+/* На десктопе меню всегда видно */
+@media (min-width: 1120px) {
+  .side-panel {
+    position: static !important;
+    left: 0 !important;
+    display: block !important; }
+  .burger-btn {
+    display: none !important; }
+  .menu-overlay {
+    display: none !important; } }
 
 
 /*# sourceMappingURL=style.css.map*/
